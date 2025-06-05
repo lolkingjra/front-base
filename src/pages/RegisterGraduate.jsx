@@ -3,7 +3,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from'react-bootstrap/Container';
+
 const RegisterGraduate=()=>{
+  const [editingId, setEditingId] = useState(null);
 const[graduate,setGraduate]= useState({
     name:'',
     id:'',
@@ -21,11 +23,28 @@ const handleChange= (e) => {
   });
 };
 //envio del form y leer desde el useState
-const handleSubmit= (e)=>{
+const handleSubmit= async(e)=>{
 e.preventDefault();
-console.log('datos enviados: ',graduate,counter+1);
 
+try{
+  const response = await fetch('http://localhost:3000/graduates',{
+method:'POST',
+headers:{'Content-Type':'application/json',},
+body: JSON.stringify(graduate),
+
+});
 }
+catch (error) {
+  console.log("error en la peticion al backend",error);
+  
+}
+};
+
+ const handleEdit = (graduate) => {
+    setGraduate({ ...graduate, id: graduate.id });
+    setEditingId(graduate.name);
+  };
+
 return(
 
 <Container className="mt-4">
@@ -110,10 +129,16 @@ return(
       <Button variant="primary" type="submit">
         Registrar graduado
       </Button>
+      <Button variant="primary" type="submit"
+       
+      onClick={() => handleEdit(graduate)}
+        className="bg-green-700 hover:underline"
+      >
+       Actualizar informacion
+      </Button>
     </Form>
 </Container>
-
-
 );
 };
+
 export default RegisterGraduate;

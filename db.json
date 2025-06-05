@@ -1,0 +1,44 @@
+{
+  "graduates": [
+    {
+      "id": "123554654",
+      "name": "jose xxxxxx",
+      "email": "email@example.com",
+      "phone": "5458212",
+      "address": "150 mts sur takataka",
+      "carreer": "sistemas",
+      "graduatedYear": "2025",
+      "documents": ""
+    },
+    {
+      "id": "",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "carreer": "",
+      "graduatedYear": "",
+      "documents": ""
+    },
+    {
+      "id": "",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "carreer": "",
+      "graduatedYear": "",
+      "documents": ""
+    },
+    {
+      "id": "703100415",
+      "name": "jose xxxxxx",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "carreer": "",
+      "graduatedYear": "",
+      "documents": ""
+    }
+  ]
+}
