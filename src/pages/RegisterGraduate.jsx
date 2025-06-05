@@ -45,87 +45,144 @@ catch (error) {
     setEditingId(graduate.name);
   };
 
-return(
 
-<Container className="mt-4">
-  <h2>Registro de Graduado</h2>
-<Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="name">
-        <Form.Label>Nombre completo</Form.Label>
-        <Form.Control type="text" placeholder="Ingrese su nombre completo"
-        name = "name"
-        value={graduate.name}
-        onChange={handleChange} />
-        <Form.Text className="text-muted">
-          No se  compartirá con externos su correo.
-        </Form.Text>
-      </Form.Group>
+  const inputClasses = "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
+ 
 
-      <Form.Group className="mb-3" controlId="id">
-        <Form.Label>Cedula ó identificación</Form.Label>
-        <Form.Control type="text" placeholder=" ingrese su Identificación" 
-        name="id"
-        value={graduate.id}
-        onChange={handleChange}
-        />
-      </Form.Group>
+  const labelClasses = "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400";
 
-<Form.Group className="mb-3" controlId="email">
-          <Form.Label>Correo electrónico</Form.Label>
-          <Form.Control
+  return (
+    <div className="mt-4 px-4"> 
+      <h2 className="text-2xl font-bold mb-6 text-center text-bg-red-900 dark:text-bg bg-red-400">Registro de Graduado</h2>
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-gray-800 dark:bg-gray-900 p-8 rounded-lg shadow-md"> {/* Ajustado max-w-lg para más espacio */}
+        
+        {/* Nombre completo */}
+        <div className="mb-5">
+          <label htmlFor="name" className={labelClasses}>Nombre completo</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={graduate.name}
+            onChange={handleChange}
+            className={inputClasses}
+            placeholder="Ingrese su nombre completo"
+            required
+          />
+         
+        </div>
+
+        {/* Cedula ó identificación */}
+        <div className="mb-5">
+          <label htmlFor="id" className={labelClasses}>Cédula ó identificación</label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            value={graduate.id}
+            onChange={handleChange}
+            className={inputClasses}
+            placeholder="Ingrese su Identificación"
+            required
+          />
+        </div>
+
+        {/* Correo electrónico */}
+        <div className="mb-5">
+          <label htmlFor="email" className={labelClasses}>Correo electrónico</label>
+          <input
             type="email"
-            placeholder="email@ejemplo.com"
+            id="email"
             name="email"
             value={graduate.email}
             onChange={handleChange}
+            className={inputClasses}
+            placeholder="email@ejemplo.com"
+            required
           />
-        </Form.Group>
+           <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            No se compartirá con externos su correo.
+          </p>
+        </div>
 
-        <Form.Group className="mb-3" controlId="phone">
-          <Form.Label>Teléfono</Form.Label>
-          <Form.Control
+        {/* Teléfono */}
+        <div className="mb-5">
+          <label htmlFor="phone" className={labelClasses}>Teléfono</label>
+          <input
             type="tel"
-            placeholder="123456789"
+            id="phone"
             name="phone"
             value={graduate.phone}
             onChange={handleChange}
+            className={inputClasses}
+            placeholder="123456789"
+            required
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3" controlId="address">
-          <Form.Label>Dirección</Form.Label>
-          <Form.Control
+        {/* Dirección */}
+        <div className="mb-5">
+          <label htmlFor="address" className={labelClasses}>Dirección</label>
+          <input
             type="text"
-            placeholder="Dirección"
+            id="address"
             name="address"
             value={graduate.address}
             onChange={handleChange}
+            className={inputClasses}
+            placeholder="Dirección"
+            required
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3" controlId="carreer">
-          <Form.Label>Carrera cursada</Form.Label>
-          <Form.Control
+        {/* Carrera cursada */}
+        <div className="mb-5">
+          <label htmlFor="carreer" className={labelClasses}>Carrera cursada</label>
+          <input
             type="text"
-            placeholder="Carrera"
+            id="carreer"
             name="carreer"
             value={graduate.carreer}
             onChange={handleChange}
+            className={inputClasses}
+            placeholder="Carrera"
+            required
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className="mb-3" controlId="graduatedYear">
-          <Form.Label>Año de graduación</Form.Label>
-          <Form.Control
+        {/* Año de graduación */}
+        <div className="mb-5">
+          <label htmlFor="graduatedYear" className={labelClasses}>Año de graduación</label>
+          <input
             type="number"
-            placeholder="2023"
+            id="graduatedYear"
             name="graduatedYear"
             value={graduate.graduatedYear}
             onChange={handleChange}
+            className={inputClasses}
+            placeholder="2023"
+            min="1900" // Buena práctica
+            max={new Date().getFullYear()} // Buena práctica
+            required
           />
-        </Form.Group>
-     
-      
+        </div>
+
+        {/* Adjuntar documentos */}
+        <div className="mb-5">
+          <label htmlFor="documents" className={labelClasses}>Adjuntar documentos (título, cédula, etc.)</label>
+          <input
+            type="file"
+            id="documents"
+            name="documents"
+            // El value de un input type="file" no se controla directamente en React de la misma forma.
+            // Se maneja a través del onChange y el objeto 'files'.
+            // value={graduate.documents} // Esto no funciona bien para file inputs
+            onChange={handleChange}
+            className={`${inputClasses} file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-gray-600 dark:file:text-gray-300 dark:hover:file:bg-gray-500`}
+            // 'required' para file puede ser opcional dependiendo de tu lógica
+          />
+        </div>
+
       <Button variant="primary" type="submit">
         Registrar graduado
       </Button>
@@ -136,8 +193,8 @@ return(
       >
        Actualizar informacion
       </Button>
-    </Form>
-</Container>
+    </form>
+    </div>
 );
 };
 

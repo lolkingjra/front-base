@@ -25,8 +25,8 @@
 
      return (
        <header>
-          <div className={`flex justify-between items-center p-4 shadow-sm border-b bg-white ${backgroundTheme}`}>
-            <h1 className="text-lg font-semibold text-gray-700">{searchTitle}</h1>
+          <div className={`flex justify-between items-center p-4 shadow-sm border-b bg-gray-800 ${backgroundTheme}`}>
+            <h1 className="text-lg font-semibold text-red-50">{searchTitle}</h1>
             <div className="w-full max-w-xs">
               <SearchBar 
                 searchTerm={searchTerm} 

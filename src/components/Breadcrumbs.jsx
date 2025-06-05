@@ -17,10 +17,10 @@ const routeNameMap = {
   const pathnames = location.pathname.split("/").filter(Boolean);
 
   return (
-    <nav className="bg-gray-100 py-2 px-4 text-sm text-gray-700">
+    <nav className="bg-gray-800 py-2 px-4 text-sm text-red-500">
       <ol className="flex space-x-1">
         <li>
-          <Link to="/" className="text-blue-600 hover:underline">Inicio</Link>
+          <Link to="/" className="text-red-500 hover:underline">Inicio</Link>
           {pathnames.length > 0 && <span className="mx-1">/</span>}
         </li>
         {pathnames.map((name, index) => {
@@ -32,13 +32,13 @@ const routeNameMap = {
             <li key={routeTo}>
               {!isLast ? (
                 <>
-                  <Link to={routeTo} className="text-blue-600 hover:underline capitalize">
+                  <Link to={routeTo} className="text-red-700 hover:underline capitalize">
                     {label}
                   </Link>
                   <span className="mx-1">/</span>
                 </>
               ) : (
-                <span className="text-gray-500 capitalize">{label}</span>
+                <span className="text-red-500 capitalize">{label}</span>
               )}
             </li>
           );

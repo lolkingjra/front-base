@@ -6,7 +6,7 @@ import Breadcrumbs from './Breadcrumbs';
 import { Outlet } from 'react-router-dom';
 import { SearchContext } from './context/SearchContext';
 import { Menu } from "lucide-react";
-export const DEFAULT_THEME = "bg-gray-100";
+export const DEFAULT_THEME = "bg-gray-700";
 
 const Layout = () => {
   const { user } = useAuth();
